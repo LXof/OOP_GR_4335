@@ -1,15 +1,16 @@
 package Classes;
 
-public class PromotionalClient extends Actor {
+import Interfaces.iReturnOrder;
+
+public class PromotionalClient extends Actor implements iReturnOrder {
     private String promotionName;
     private int clientId;
     private static int participantsCount;
     
-    public PromotionalClient(String name, String promotionName, int clientId) {
+    public PromotionalClient(String name, String promotionName) {
         super(name);
         this.promotionName = promotionName;
-        this.clientId = clientId;
-        participantsCount++;
+        this.clientId = ++participantsCount;  
     }
 
     public String getPromotionName() {
@@ -24,28 +25,24 @@ public class PromotionalClient extends Actor {
         return participantsCount;
     }
 
-    @Override
     public void setTakeOrder(boolean makeOrder) {
         super.isMakeOrder = makeOrder;
     }
 
-    @Override
     public void setMakeOrder(boolean takeOrder) {
         super.isTakeOrder = takeOrder;
     }
 
-    @Override
     public boolean isTakeOrder() {
         return super.isTakeOrder;
     }
           
 
-    @Override
+
     public boolean isMakeOrder() {
         return super.isMakeOrder;
     }
 
-    @Override
     public Actor getActor() {
         return this;
     }
@@ -54,4 +51,16 @@ public class PromotionalClient extends Actor {
     public String getName() {
         return super.name;
     }
+
+    @Override
+    public void returnOrder() {
+        // Логика возврата товара для обычного клиента
+        System.out.println(getName() + " вернул товар.");
+    }
+
+    @Override
+    public void cancelOrder() {
+        System.out.println(getName() + " отменил заказ.");
+    }
+
 }

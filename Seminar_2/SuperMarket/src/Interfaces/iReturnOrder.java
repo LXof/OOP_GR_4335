@@ -2,5 +2,6 @@ package Interfaces;
 
 public interface iReturnOrder {
 
-    void returnOrder(int orderNumber);
+    void returnOrder();
+    void cancelOrder();
 }

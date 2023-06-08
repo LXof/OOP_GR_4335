@@ -1,6 +1,8 @@
 package Classes;
 
-public class SpecialClient extends Actor {
+import Interfaces.iReturnOrder;
+
+public class SpecialClient extends Actor implements iReturnOrder{
     int idVip;
 
     public SpecialClient(String name, int idVip) {
@@ -36,6 +38,16 @@ public class SpecialClient extends Actor {
         return this;
     }
 
+    @Override
+    public void returnOrder() {
+        // Логика возврата товара для обычного клиента
+        System.out.println(getName() + " вернул товар.");
+    }
+
+    @Override
+    public void cancelOrder() {
+        System.out.println(getName() + " отменил заказ.");
+    }
 
 
 }
