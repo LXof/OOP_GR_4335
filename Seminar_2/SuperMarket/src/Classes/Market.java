@@ -13,6 +13,7 @@ import Interfaces.iQueueBehaviour;
 public class Market implements iMarketBehaviour,iQueueBehaviour {
 
     private List<iActorBehaviour> queue;
+    private static final int MAX_PARTICIPANTS = 10;
 
     /**
      * Создает объект магазина с пустой очередью.
@@ -22,15 +23,23 @@ public class Market implements iMarketBehaviour,iQueueBehaviour {
     }
 
     /**
-     * Метод дляпринятия клиента в магазин.
+     * Метод для принятия клиента в магазин.
      * 
      * @param actor клиент
      */
     @Override
     public void acceptToMarket(iActorBehaviour actor) {
-        System.out.println(actor.getActor().getName()+" клиент пришел в магазин ");
+        if (actor instanceof PromotionalClient) {
+            if (((PromotionalClient) actor).getParticipantsCount() > MAX_PARTICIPANTS) {
+                System.out.println(actor.getActor().getName() + " не может быть допущен к продаже. Превышено максимальное количество участников.");
+                return;
+            }
+        }
+
+        System.out.println(actor.getActor().getName() + " клиент вышел на рынок ");
         takeInQueue(actor);
     }
+
 
     /**
      * Метод для добавления клиента в очередь.
