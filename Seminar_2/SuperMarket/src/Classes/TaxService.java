@@ -11,6 +11,7 @@ public class TaxService implements iActorBehaviour, iReturnOrder  {
     private String name;
     private boolean isTakeOrder;
     private boolean isMakeOrder;
+    private String returnLogEntry;
 
     /**
      * Создает объект налоговой службы с именем "Tax audit".
@@ -84,7 +85,8 @@ public class TaxService implements iActorBehaviour, iReturnOrder  {
     @Override
     public void returnOrder() {
         // Логика возврата товара для обычного клиента
-        System.out.println(getName() + " вернул товар.");
+        returnLogEntry = getActor().getName() + " вернул товар.";
+        System.out.println(returnLogEntry);
     }
 
     /**
@@ -92,7 +94,13 @@ public class TaxService implements iActorBehaviour, iReturnOrder  {
      */
     @Override
     public void cancelOrder() {
-        System.out.println(getName() + " отменил заказ.");
+        returnLogEntry = getActor().getName() + " отменил заказ.";
+        System.out.println(returnLogEntry);
+    }
+
+    @Override
+    public String getReturnLogEntry() {
+        return returnLogEntry;
     }
 
     

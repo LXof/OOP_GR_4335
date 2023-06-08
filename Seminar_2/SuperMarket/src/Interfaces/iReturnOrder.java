@@ -14,4 +14,6 @@ public interface iReturnOrder {
      * Отменяет заказ.
      */
     void cancelOrder();
+
+    String getReturnLogEntry();
 }

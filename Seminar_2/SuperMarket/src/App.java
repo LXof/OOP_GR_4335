@@ -8,7 +8,8 @@ import Interfaces.iReturnOrder;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Market market = new Market();
+        String logFilePath = "./LogFile.log";
+        Market market = new Market(logFilePath);
         iActorBehaviour client1 = new OrdinaryClient("Egor");
         iActorBehaviour client2 = new OrdinaryClient("Dasha");
         iActorBehaviour client3 = new SpecialClient("President", 1);

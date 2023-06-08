@@ -6,7 +6,8 @@ import Interfaces.iReturnOrder;
  * Класс, представляющий специального клиента.
  */
 public class SpecialClient extends Actor implements iReturnOrder{
-    int idVip;
+    private int idVip;
+    private String returnLogEntry;
 
     /**
      * Создает объект специального клиента с указанным именем и идентификатором VIP.
@@ -88,7 +89,8 @@ public class SpecialClient extends Actor implements iReturnOrder{
     @Override
     public void returnOrder() {
         // Логика возврата товара для обычного клиента
-        System.out.println(getName() + " вернул товар.");
+        returnLogEntry = getActor().getName() + " вернул товар.";
+        System.out.println(returnLogEntry);
     }
 
     /**
@@ -96,7 +98,13 @@ public class SpecialClient extends Actor implements iReturnOrder{
      */
     @Override
     public void cancelOrder() {
-        System.out.println(getName() + " отменил заказ.");
+        returnLogEntry = getActor().getName() + " отменил заказ.";
+        System.out.println(returnLogEntry);
+    }
+
+    @Override
+    public String getReturnLogEntry() {
+        return returnLogEntry;
     }
 
 

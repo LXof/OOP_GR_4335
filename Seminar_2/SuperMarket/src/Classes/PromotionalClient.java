@@ -9,6 +9,7 @@ public class PromotionalClient extends Actor implements iReturnOrder {
     private String promotionName;
     private int clientId;
     private static int participantsCount;
+    private String returnLogEntry;
     
     /**
      * Создает объект клиента-участника промо-акции с заданным именем и названием акции
@@ -110,7 +111,8 @@ public class PromotionalClient extends Actor implements iReturnOrder {
     @Override
     public void returnOrder() {
         // Логика возврата товара для обычного клиента
-        System.out.println(getName() + " вернул товар.");
+        returnLogEntry = getActor().getName() + " вернул товар.";
+        System.out.println(returnLogEntry);
     }
 
     /**
@@ -118,7 +120,12 @@ public class PromotionalClient extends Actor implements iReturnOrder {
      */
     @Override
     public void cancelOrder() {
-        System.out.println(getName() + " отменил заказ.");
+        returnLogEntry = getActor().getName() + " вернул товар.";
+        System.out.println(returnLogEntry);
     }
 
+    @Override
+    public String getReturnLogEntry() {
+        return returnLogEntry;
+    }
 }
