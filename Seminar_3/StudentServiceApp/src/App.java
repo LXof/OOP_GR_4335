@@ -1,49 +1,61 @@
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import StudentDomen.Student;
 import StudentDomen.StudentGroup;
-import StudentDomen.User;
-
+import StudentDomen.StudentStream;
 public class App {
     public static void main(String[] args) throws Exception {
-        User u1 = new User("John", "Doe", 23);
-        Student s1 = new Student("John", "Doe", 23, 101);
-        Student s2 = new Student("Даша", "Телепнева", 21, 111);
-        Student s3 = new Student("Владислав", "Наджахов", 21, 121);
-        Student s4 = new Student("Леша", "Сидоров", 21, 301);
-        Student s5 = new Student("Михаил", "Петров", 23, 171);
-        Student s6 = new Student("Семен", "Адамов", 23, 104);
-
-        List<Student> listStud = new ArrayList<>();
-        listStud.add(s1);
-        listStud.add(s2);
-        listStud.add(s3);
-        listStud.add(s4);
-        listStud.add(s5);
-        listStud.add(s6);
-
-        StudentGroup group = new StudentGroup(listStud);
-
         
-        for (Student stud : group) {
-            System.out.println(stud.toString());
+        //Создание списка учебных групп
+        List<StudentGroup> studentGroups = new ArrayList<>();
+
+        //Создание группы 1
+        List<Student> students1 = new ArrayList<>();
+        students1.add(new Student("Александр", "Петрович", 20, 109));
+        students1.add(new Student("Даша", "Телепнева", 21, 104));
+        StudentGroup group1 = new StudentGroup(students1);
+        studentGroups.add(group1);
+        
+        //Создание группы 2
+        List<Student> students2 = new ArrayList<>();
+        students2.add(new Student("Владислав", "Наджахов", 23, 102));
+        students2.add(new Student("Леша", "Сидоров", 20, 106));
+        students2.add(new Student("Михаил", "Петров", 19, 103));
+        StudentGroup group2 = new StudentGroup(students2);
+        studentGroups.add(group2);
+        
+        //Создание группы 3
+        List<Student> students3 = new ArrayList<>();
+        students3.add(new Student("Алексей", "Иванов", 22, 107));
+        students3.add(new Student("Екатерина", "Смирнова", 21, 101));
+        students3.add(new Student("Иван", "Попов", 20, 113));
+        students3.add(new Student("Ольга", "Соколва", 22, 110));
+        StudentGroup group3 = new StudentGroup(students3);
+        studentGroups.add(group3);
+        
+        //Создание группы 3
+        List<Student> students4 = new ArrayList<>();
+        students4.add(new Student("Андрей", "Ковалев", 21, 137));
+        students4.add(new Student("Алина", "Федорова", 20, 111));
+        students4.add(new Student("Денис", "Морозов", 22, 120));
+        students4.add(new Student("Наталья", "Козлова", 23, 173));
+        students4.add(new Student("Игорь", "Волков", 23, 150));
+        StudentGroup group4 = new StudentGroup(students4);
+        studentGroups.add(group4);
+
+        // Создание потока студентов
+        StudentStream studentStream = new StudentStream(1, studentGroups);
+
+        // Вывод групп со списками стдентов
+        for (StudentGroup group : studentStream) {
+            System.out.println("Группа: ");
+            for (Student student : group) {
+                System.out.println(student);                
+            }
+            System.out.println("------------------");
         }
-        
-        Collections.sort(group.getStudents());
-        System.out.println("================== После сортировки ======================");
-        
-        for (Student stud : group) {
-            System.out.println(stud.toString());
-        }
-        
-        
-        // System.out.println(u1.toString());     // User [firstName='Адамов', secondName='Семен', age=23]
-        // System.out.println(s1.toString());     // Student [studentID=101, firstName='Вячеслав', secondName='Сахоров', age=22]
-
-        // System.out.println(group);  // StudentDomen.StudentGroup@279f2327
     }
 }
 

@@ -1,8 +1,9 @@
 package StudentDomen;
 
+import java.util.Iterator;
 import java.util.List;
 
-public class StudentStream {
+public class StudentStream implements Iterable<StudentGroup>{
     private int streamNumber;                   // Номер потока
     private List<StudentGroup> studentGroups;   // Список учебных групп
 
@@ -27,4 +28,9 @@ public class StudentStream {
         this.studentGroups = studentGroups;
     }
 
+    @Override
+    public Iterator<StudentGroup> iterator() {
+        return new StudentStreamIterator(streamNumber, studentGroups);
+    }
+    
 }
