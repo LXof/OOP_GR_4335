@@ -31,7 +31,14 @@ public class StudentGroup implements Comparable<StudentGroup> {
     
     @Override
     public String toString() {
-        return "StudentGroup [groupID=" + groupID + ", students=" + students + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("руппа ID: ").append(groupID).append("\n");
+        sb.append("Количество студентов: ").append(students.size()).append("\n");
+        sb.append("Студенты:\n");
+        for (Student student : students) {
+            sb.append(student).append("\n");
+        }
+        return sb.toString();
     }
 
     @Override

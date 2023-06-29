@@ -33,4 +33,15 @@ public class StudentStream implements Iterable<StudentGroup>{
         return new StudentStreamIterator(streamNumber, studentGroups);
     }
     
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Номер птока: ").append(streamNumber).append("\n");
+        sb.append("Количество групп: ").append(studentGroups.size()).append("\n");
+        sb.append("Студенты по группам: \n");
+        for (StudentGroup group: studentGroups) {
+            sb.append(group).append("\n");
+        }
+        return sb.toString();
+    }
 }

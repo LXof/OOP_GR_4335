@@ -1,7 +1,6 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import StudentDomen.Student;
@@ -13,7 +12,6 @@ public class App {
         //Создание списка учебных групп
         List<StudentGroup> studentGroups = new ArrayList<>();
 
-        
         //Создание группы 1
         List<Student> students1 = new ArrayList<>();
         students1.add(new Student("Владислав", "Наджахов", 23, 102));
@@ -57,11 +55,8 @@ public class App {
 
         // Вывод групп со списками стдентов
         for (StudentGroup group : studentStream) {
-            System.out.println("Группа " + group.getGroupID() + ":");
-            for (Student student : group.getStudents()) {
-                System.out.println(student);                
-            }
-            System.out.println("------------------");
+            System.out.println(group);
+            System.out.println("----------------");
         }
     }
 }
